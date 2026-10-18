@@ -14,7 +14,7 @@
 | Risk | What it costs a bank |
 |---|---|
 | Laptops set up by hand | Slow onboarding, inconsistent security, high IT workload |
-| Unmanaged or out-of-date devices reaching company data | Data breaches, fraud losses, failed audits |
+| Unmanaged or out of date devices reaching company data | Data breaches, fraud losses, failed audits |
 | No proof that devices meet policy | Compliance findings and regulatory fines |
 
 ## What I built
