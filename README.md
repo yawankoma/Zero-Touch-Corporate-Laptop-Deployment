@@ -78,17 +78,9 @@
 | Device showed non-compliant | Compliance policy requires BitLocker, and the VM has no TPM | Confirmed the failing setting, kept the requirement on purpose, and documented it as a case study |
 | BitLocker did not encrypt | No TPM on the VM | Documented as expected; production laptops encrypt silently |
 
-## Limitations (honest)
+## Limitations
 
 - BitLocker encryption is configured but **not demonstrated** on the lab VM because it has no TPM, so the device stays non-compliant by design.
 - Conditional Access was validated in Report only mode; it is the testing stage before enforcement.
 - Single device and single test user, so no scale metrics are claimed.
 
-
-
-## Next steps
-
-- Add a Multifactor authentication Conditional Access policy as the identity layer next to device trust.
-- Defender for Endpoint onboarding and a device risk score requirement.
-- Device naming template for new enrollments (for example `CORP-` plus serial).
-- Add a TPM-enabled test device so BitLocker encryption can be demonstrated and the device reaches compliant.
