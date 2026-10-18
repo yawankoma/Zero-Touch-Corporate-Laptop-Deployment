@@ -2,7 +2,7 @@
 
 **One-line summary:** A cloud-only setup where a new company laptop is unboxed, signed into, and ends up managed, protected and automatically checked for compliance, with no IT hands-on time per device.
 
-**Scenario:** A fictional financial services company (bank-style, regulated) hires staff and needs laptops that are locked down from the first sign-in. Everything runs on Microsoft Entra ID and Intune, with no on-premises Active Directory.
+**Scenario:** A fictional financial services company (bank-style, regulated) hires staff and needs laptops that are locked down from the first sign in. Everything runs on Microsoft Entra ID and Intune, with no on-premises Active Directory.
 
 **My role:** Endpoint administrator (design, build, test, document).
 **Lab:** Windows 11 Pro virtual machine (VMware), Microsoft 365 tenant with Intune.
@@ -21,19 +21,19 @@
 
 | Area | What I configured | Why it matters |
 |---|---|---|
-| Zero-touch enrollment | Windows Autopilot (user-driven, Entra join), hardware hash registered with group tag `CORP`, dynamic device group, deployment profile | New laptops enroll themselves; scales from 1 to 500 devices |
+| Zero-touch enrollment | Windows Autopilot (user driven, Entra join), hardware hash registered with group tag `CORP`, dynamic device group, deployment profile | New laptops enroll themselves; scales from 1 to 500 devices |
 | Sign-in security | Windows Hello for Business (PIN bound to the device), phone sign-in disabled | Credentials tied to the device, fewer attack paths |
 | Endpoint protection | Microsoft Defender Antivirus policy, BitLocker disk encryption policy with recovery keys stored in Entra ID | Malware protection and encryption on lost or stolen devices |
-| App deployment | Microsoft 365 Apps (Word, Excel, PowerPoint, Outlook, Teams) pushed as a required app | Staff are productive at first sign-in |
-| Compliance | Device compliance policy: BitLocker encryption, sign-in credential, firewall, antivirus, antispyware, Defender real-time protection, up-to-date signatures, Windows 11 minimum | Defines what a "trusted" device is |
+| App deployment | Microsoft 365 Apps (Word, Excel, PowerPoint, Outlook, Teams) pushed as a required app | Staff are productive at first sign in |
+| Compliance | Device compliance policy: BitLocker encryption, sign in credential, firewall, antivirus, antispyware, Defender real time protection, up to date signatures, Windows 11 minimum | Defines what a "trusted" device is |
 | Access control | Conditional Access policy: require a compliant device for cloud apps (tested in Report-only mode) | Only trusted devices reach company data |
-| Patching | Two update rings: Pilot (updates immediately) and Broad (7-day quality, 30-day feature deferral), 30-day uninstall window, enforced deadlines | A bad update is caught on the pilot group before it reaches everyone |
+| Patching | Two update rings: Pilot (updates immediately) and Broad (7 day quality, 30 day feature deferral), 30 day uninstall window, enforced deadlines | A bad update is caught on the pilot group before it reaches everyone |
 
 ## Key decisions and trade-offs
 
-- **Group tag + dynamic group instead of manual assignment.** Devices are labelled `CORP` when registered, so policies follow the label. My first attempt used a hardware and OS-version rule, which failed because OS version does not exist on the device record before enrollment.
-- **Report-only before enforcing.** The Conditional Access policy was tested in Report-only mode and my admin account was excluded, so a mistake could not lock out the tenant. A production setup would also keep a separate break-glass account.
-- **Immediate non-compliance flag.** Failing devices are marked non-compliant at once for fast testing. Production would add a grace period (around 1 day) and a notification email, to avoid disrupting users unnecessarily.
+- **Group tag + dynamic group instead of manual assignment.** Devices are labelled `CORP` when registered, so policies follow the label. My first attempt used a hardware and OS version rule, which failed because OS version does not exist on the device record before enrollment.
+- **Report-only before enforcing.** The Conditional Access policy was tested in Report only mode and my admin account was excluded, so a mistake could not lock out the tenant. A production setup would also keep a separate break glass account.
+- **Immediate non-compliance flag.** Failing devices are marked non compliant at once for fast testing. Production would add a grace period (around 1 day) and a notification email, to avoid disrupting users unnecessarily.
 - **Windows Hello TPM setting.** Set to Preferred because the lab VM has no virtual TPM. Production would use Required.
 - **BitLocker kept as a compliance requirement.** I deliberately did not weaken the policy to make the lab VM pass. The VM has no TPM, so it is flagged non-compliant, which is the policy doing its job (see the case study below).
 - **Conflicting policies avoided.** Defender created a default antivirus policy for all devices, so custom policies are scoped to the corporate group only.
@@ -48,7 +48,7 @@
 
 **What this shows:** the controls work as designed. A device that enrolled correctly but is not encrypted does not get trusted access.
 
-**Production fix:** a corporate laptop with TPM 2.0 encrypts silently after sign-in, stores its recovery key in Entra ID, and becomes compliant with no user action.
+**Production fix:** a corporate laptop with TPM 2.0 encrypts silently after sign in, stores its recovery key in Entra ID, and becomes compliant with no user action.
 
 ## Proof
 
@@ -83,26 +83,10 @@
 ## Limitations (honest)
 
 - BitLocker encryption is configured but **not demonstrated** on the lab VM because it has no TPM, so the device stays non-compliant by design.
-- Conditional Access was validated in Report-only mode; it is the testing stage before enforcement.
+- Conditional Access was validated in Report only mode; it is the testing stage before enforcement.
 - Single device and single test user, so no scale metrics are claimed.
 
-## How it is built (reference runbook)
 
-| Step | Where |
-|---|---|
-| Capture hardware hash with group tag | PowerShell: `Get-WindowsAutopilotInfo -Online -GroupTag CORP` |
-| Check device and group tag | Intune admin center > Devices > Enrollment > Windows > Devices (under Windows Autopilot) |
-| Dynamic group | Entra admin center > Entra ID > Groups > All groups > New group (rule: `(device.devicePhysicalIds -any (_ -eq "[OrderID]:CORP"))`) |
-| Deployment profile | Intune admin center > Devices > Enrollment > Windows > Deployment profiles |
-| Windows Hello for Business | Intune admin center > Devices > Enrollment > Windows > Windows Hello for Business |
-| Antivirus policy | Intune admin center > Endpoint security > Antivirus |
-| BitLocker policy | Intune admin center > Endpoint security > Disk encryption |
-| App deployment | Intune admin center > Apps > All apps |
-| Compliance policy | Intune admin center > Devices > Compliance > Create policy |
-| Conditional Access | Entra admin center > Entra ID > Conditional Access > Policies |
-| Check Report-only results | Entra admin center > Entra ID > Monitoring & health > Sign-in logs > Report-only tab |
-
-*Menu labels shift between portal updates; use the portal search bar if one does not match.*
 
 ## Next steps
 
