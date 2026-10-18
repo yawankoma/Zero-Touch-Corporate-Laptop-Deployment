@@ -64,9 +64,7 @@
    ![Alt text](161247.png)
 6. **Conditional Access result:** sign-in log Report-only tab showing the policy **would fail** for this device.
    ![Alt text](161802.png) ![Alt text](161413.png)
-7. **Encryption report:** shows the VM as not ready for BitLocker (TPM unknown), which explains the non-compliance.
-   ![Alt text](161413.png)
-8. **Update rings:** the Pilot ring showing the VM in device status, and the Broad ring where it does not appear.
+7. **Update rings:** the Pilot ring showing the VM in device status, and the Broad ring where it does not appear.
    ![Alt text](162000.png)
 
 ## What I found and how I fixed it
