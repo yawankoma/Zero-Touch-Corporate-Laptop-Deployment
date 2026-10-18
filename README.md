@@ -22,7 +22,7 @@
 | Area | What I configured | Why it matters |
 |---|---|---|
 | Zero-touch enrollment | Windows Autopilot (user driven, Entra join), hardware hash registered with group tag `CORP`, dynamic device group, deployment profile | New laptops enroll themselves; scales from 1 to 500 devices |
-| Sign-in security | Windows Hello for Business (PIN bound to the device), phone sign-in disabled | Credentials tied to the device, fewer attack paths |
+| Sign in security | Windows Hello for Business (PIN bound to the device), phone sign in disabled | Credentials tied to the device, fewer attack paths |
 | Endpoint protection | Microsoft Defender Antivirus policy, BitLocker disk encryption policy with recovery keys stored in Entra ID | Malware protection and encryption on lost or stolen devices |
 | App deployment | Microsoft 365 Apps (Word, Excel, PowerPoint, Outlook, Teams) pushed as a required app | Staff are productive at first sign in |
 | Compliance | Device compliance policy: BitLocker encryption, sign in credential, firewall, antivirus, antispyware, Defender real time protection, up to date signatures, Windows 11 minimum | Defines what a "trusted" device is |
