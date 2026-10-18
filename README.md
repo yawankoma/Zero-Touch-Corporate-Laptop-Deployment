@@ -52,8 +52,6 @@
 
 ## Proof
 
-> Replace each line below with your screenshot. Blur the tenant name, user email domain and device serial number first.
-
 1. **Autopilot registration:** device listed with group tag `CORP` and profile status Assigned.
    `![Autopilot device](screenshots/01-autopilot-device.png)`
 2. **Dynamic group rule:** group rule on the `[OrderID]:CORP` tag, VM listed as a member.
