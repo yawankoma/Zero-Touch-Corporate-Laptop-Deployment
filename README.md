@@ -53,7 +53,7 @@
 ## Proof
 
 1. **Autopilot registration:** device listed with group tag `CORP` and profile status Assigned.
-   `![pic](pic/Screenshot 2026-10-18 142843.png)'
+   ![Alt text](pic/2843.png)
 2. **Dynamic group rule:** group rule on the `[OrderID]:CORP` tag, VM listed as a member.
    `![Dynamic group](screenshots/02-dynamic-group.png)`
 3. **Out-of-box experience:** the organization-branded sign-in screen during setup.
