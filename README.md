@@ -1,8 +1,8 @@
 # Zero-Touch Corporate Laptop Deployment (Windows Autopilot + Intune)
 
-**One-line summary:** A cloud-only setup where a new company laptop is unboxed, signed into, and ends up managed, protected and automatically checked for compliance, with no IT hands-on time per device.
+**One line summary:** A cloud-only setup where a new company laptop is unboxed, signed into, and ends up managed, protected and automatically checked for compliance, with no IT hands-on time per device.
 
-**Scenario:** A fictional financial services company (bank-style, regulated) hires staff and needs laptops that are locked down from the first sign in. Everything runs on Microsoft Entra ID and Intune, with no on-premises Active Directory.
+**Scenario:** A fictional company hires staff and needs laptops that are locked down from the first sign in. Everything runs on Microsoft Entra ID and Intune, with no on-premises Active Directory.
 
 **My role:** Endpoint administrator (design, build, test, document).
 **Lab:** Windows 11 Pro virtual machine (VMware), Microsoft 365 tenant with Intune.
