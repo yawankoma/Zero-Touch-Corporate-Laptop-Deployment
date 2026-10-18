@@ -55,19 +55,19 @@
 1. **Autopilot registration:** device listed with group tag `CORP` and profile status Assigned.
    ![Alt text](pic/2843.png)
 2. **Dynamic group rule:** group rule on the `[OrderID]:CORP` tag, VM listed as a member.
-   `![Dynamic group](screenshots/02-dynamic-group.png)`
+    ![Alt text](pic/143029.png)
 3. **Out-of-box experience:** the organization-branded sign-in screen during setup.
-   `![OOBE](screenshots/03-oobe.png)`
+   ![Alt text](pic/143217.png)
 4. **Enrolled device:** device in Intune with the user, "Corporate" ownership and Managed by Intune.
-   `![Enrolled device](screenshots/04-enrolled-device.png)`
+   ![Alt text](pic/161247.png)
 5. **Non-compliant state:** device marked non-compliant in Intune, with the per-setting view showing the encryption requirement as the failing item.
-   `![Non-compliant](screenshots/05-non-compliant.png)`
+   ![Alt text](pic/161247.png)
 6. **Conditional Access result:** sign-in log Report-only tab showing the policy **would fail** for this device.
-   `![CA report-only](screenshots/06-ca-report-only.png)`
+   ![Alt text](pic/161802.png) ![Alt text](pic/161413.png)
 7. **Encryption report:** shows the VM as not ready for BitLocker (TPM unknown), which explains the non-compliance.
-   `![Encryption report](screenshots/07-encryption-report.png)`
+   ![Alt text](pic/161413.png)
 8. **Update rings:** the Pilot ring showing the VM in device status, and the Broad ring where it does not appear.
-   `![Update rings](screenshots/08-update-rings.png)`
+   ![Alt text](pic/162000.png)
 
 ## What I found and how I fixed it
 
