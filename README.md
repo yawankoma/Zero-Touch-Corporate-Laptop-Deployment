@@ -55,17 +55,17 @@
 1. **Autopilot registration:** device listed with group tag `CORP` and profile status Assigned.
    ![Alt text](pic/2843.png)
 2. **Dynamic group rule:** group rule on the `[OrderID]:CORP` tag, VM listed as a member.
-   ![Alt text](143029.png)
+   ![Alt text](pic/143029.png)
 3. **Out-of-box experience:** the organization-branded sign-in screen during setup.
-   ![Alt text](143217.png)
+   ![Alt text](pic/143217.png)
 4. **Enrolled device:** device in Intune with the user, "Corporate" ownership and Managed by Intune.
-   ![Alt text](161247.png)
+   ![Alt text](pic/161247.png)
 5. **Non-compliant state:** device marked non-compliant in Intune, with the per-setting view showing the encryption requirement as the failing item.
-   ![Alt text](161247.png)
+   ![Alt text](pic/161247.png)
 6. **Conditional Access result:** sign-in log Report-only tab showing the policy **would fail** for this device.
-   ![Alt text](161802.png) ![Alt text](161413.png)
+   ![Alt text](pic/161802.png) ![Alt text](pic/161413.png)
 7. **Update rings:** the Pilot ring showing the VM in device status, and the Broad ring where it does not appear.
-   ![Alt text](162000.png)
+   ![Alt text](pic/162000.png)
 
 ## What I found and how I fixed it
 
